@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 const PORT = 3000;
-app.use(cors());
+app.use(cors("*"));
 // Route to handle scraping request
 app.get("/api/scrape", async (req, res) => {
   const keyword = req.query.keyword;
