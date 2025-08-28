@@ -1,6 +1,6 @@
 
 
-````markdown
+
 # Amazon Scraper API (Bun + Express + Axios + JSDOM)
 
 A simple project for a job test that creates an API to scrape data from Amazonâ€™s search results page using Bun.
@@ -20,7 +20,7 @@ A simple project for a job test that creates an API to scrape data from Amazonâ€
 
 - Node.js is not required, but you need to have Bun installed on your system.
 - To install it on Windows:
-
+```
 ``powershell -c "irm bun.sh/install.ps1 | iex"``
 
 - To install Bun in Linux or MacOS:  
