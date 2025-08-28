@@ -13,10 +13,11 @@ scrapeBtn.addEventListener("click", async () => {
   }
 
   resultsDiv.innerHTML = "Loading...";
+  const BASE_URL = "https://lofi-amazon-product-seacher.onrender.com";
 
   // Make request to backend API
   try {
-    const response = await fetch(`/api/scrape?keyword=${encodeURIComponent(keyword)}`);
+    const response = await fetch(`${BASE_URL}/api/scrape?keyword=${encodeURIComponent(keyword)}`);
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
