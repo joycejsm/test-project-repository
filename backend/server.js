@@ -1,5 +1,5 @@
 import express from "express";
-import axios from "axios";
+// import axios from "axios";
 import { JSDOM } from "jsdom";
 import cors from "cors";
 
@@ -22,7 +22,7 @@ app.get("/api/scrape", async (req, res) => {
     console.log("Fetching URL:", url);
 
      // Make HTTP request to Amazon with realistic headers to avoid blocking
-    const { data: html } = await axios.get(url, {
+    const response = await fetch(url, {
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
@@ -31,11 +31,13 @@ app.get("/api/scrape", async (req, res) => {
         "Referer": "https://www.amazon.com/",
       },
     });
+
+    const html = await response.text();
  // Load HTML into JSDOM for parsing
     const dom = new JSDOM(html);
     const document = dom.window.document;
 
-    const items = [...document.querySelectorAll("div.s-result-item[data-component-type='s-search-result']")];
+    const items = [...document.querySelectorAll("div.s-result-item[data-component-type='s-search-result']"),];
 // Extract product details: title, rating, reviews count, and image URL
     const results = items.map((item) => {
       const title = item.querySelector("h2 a span")?.textContent?.trim() || null;
