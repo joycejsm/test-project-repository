@@ -4,8 +4,13 @@ import { JSDOM } from "jsdom";
 import cors from "cors";
 
 const app = express();
-app.use(cors());
+
 const PORT = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: "https://test-project-repository-one.vercel.app",
+  methods: ["GET", "POST"],
+}));
 
 // Route to handle scraping request
 app.get("/api/scrape", async (req, res) => {
