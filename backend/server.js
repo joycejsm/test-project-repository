@@ -4,8 +4,9 @@ import { JSDOM } from "jsdom";
 import cors from "cors";
 
 const app = express();
-const PORT = 3000;
-app.use(cors({ origin: "*"}));
+app.use(cors());
+const PORT = process.env.PORT || 3000;
+
 // Route to handle scraping request
 app.get("/api/scrape", async (req, res) => {
   const keyword = req.query.keyword;
